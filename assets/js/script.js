@@ -10,7 +10,7 @@
 
 var today = dayjs();
 var displayDate = dayjs().format('dddd MMM D, YYYY');
-// var apiKey = e474eaacc96b11909564331f7b9f7855
+
 // var getApi= https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
 document.getElementById('currentDate').textContent = dayjs().format('dddd MMM D, YYYY');
