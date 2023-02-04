@@ -9,18 +9,22 @@
 // THEN I am again presented with current and future conditions for that city
 
 var today = dayjs();
-var displayDate = dayjs().format('dddd MMM D, YYYY');
+var getApi= "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}"
 
-// var getApi= https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+document.getElementById('currentDate').textContent = dayjs().format('(M/D/YYYY)');
 
-document.getElementById('currentDate').textContent = dayjs().format('dddd MMM D, YYYY');
+
+
+
 
 
 // PSUDOCODING
 
-// 4 cards displaying search, search history, current day weather, & 5-day forcast
-    // connect weather API provided in readme 
-        // get API key
-    // 
+// fectch call 1 (user will enter a city name)
+    // returns Lat/Lon
+        // fetch call 2 (takes in Lat/Lon)
+            // returns Weather data
+                // fetch call 3 (takes in icon id)
+                    // returns the actual image 
+// break these out into functions 
 
-    
