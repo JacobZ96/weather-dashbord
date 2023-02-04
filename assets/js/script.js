@@ -9,11 +9,18 @@
 // THEN I am again presented with current and future conditions for that city
 
 var today = dayjs();
-var getApi= "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}"
+var requestUrl= "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid= apiKey";
+var apiKey = "e474eaacc96b11909564331f7b9f7855"
+document.getElementById('date').textContent = dayjs().format('(M/D/YYYY)');
 
-document.getElementById('currentDate').textContent = dayjs().format('(M/D/YYYY)');
-
-
+function getApi(requestUrl) {
+    fetch(requestUrl).then(function (response){
+        console.log(response.status);
+    }) 
+    .then(function(data) {
+        console.log(data);
+    });
+};
 
 
 

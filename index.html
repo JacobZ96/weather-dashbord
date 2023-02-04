@@ -13,74 +13,38 @@
     <header id="header"> 
         <h1>Weather Dashboard</h1>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-4">
-                    <label>Search for a City:</label> 
-                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" class="btn btn-outline-primary">search</button>
+            <div class="col-12 col-lg-3">
+                <div class="card">
+                    <h3>Search for a City:</h3> 
+                    <input type="search" class="form-control rounded" placeholder="City" aria-label="Search" aria-describedby="search-addon" />
+                    <button type="button" class="btn btn-outline-primary">search</button>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h6>search history</h6>
+                        <button class ="clearBtn" id="clear-history">Clear</button>
+                    </div>
+                    <div class="card-body" id="history"></div>
+                </div>
             </div>
             
-            <div class="col-8 today">
-                    <h3 id="currentDate"></h3>
-                    <p>Temp:</p>
-                    <p>Humidity:</p>
-                    <p>Wind:</p>
+            <div class="col-12 col-lg-9" id="today">
+                    <h3 class="card-header"><span id="name"></span><span id="date"></span><span id="icon"></span></h3>
+                    <p>Temp:<span id="Temp"></span></p>
+                    <p>Humidity:<span id="Humidity"></span></p>
+                    <p>Wind:<span id="Wind"></span></p>
                 </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-4">
-                <div class="card-body">
-                    search history
-                </div>
+        <div class="card" id="5-day-forcast">
+            <div class="card-header">
+                <h3 class="card-title">5-Day-Forcast</h3>
             </div>
-        
-            <div class="row col-8">
-                <div class="col back ">
-                    <p id="day1"></p>
-                    <p>icon:</p>
-                    <p>Temp:</p>
-                    <p>Wind:</p>
-                    <p>Humidity:</p>
-                </div>
-            
-            
-                <div class="col back ">
-                    <p id="day2"></p>
-                    <p>icon:</p>
-                    <p>Temp:</p>
-                    <p>Wind:</p>
-                    <p>Humidity:</p>
-                </div>
-            
-
-                <div class="col back ">
-                    <p id="day3"></p>
-                    <p>icon:</p>
-                    <p>Temp:</p>
-                    <p>Wind:</p>
-                    <p>Humidity:</p>
-                </div>
-            
-
-                <div class="col back ">
-                    <p id="day4"></p>
-                    <p>icon:</p>
-                    <p>Temp:</p>
-                    <p>Wind:</p>
-                    <p>Humidity:</p>
-                </div>
-            
-
-                <div class="col back ">
-                    <p id="day5"></p>
-                    <p>icon:</p>
-                    <p>Temp:</p>
-                    <p>Wind:</p>
-                    <p>Humidity:</p>
-                </div>
+            <div class="row card-body" id="forcast-body">
             </div>
         </div>
     </div>
