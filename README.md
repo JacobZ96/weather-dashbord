@@ -1,6 +1,7 @@
 # weather-dashbord
 
 ## Description
+Webpage where you can search for a city in the US and see the current days weather as well as the next 5 day forcast for that city. All previous searches are saved to a list on the page under the search area. 
 
 ## User Story
 
@@ -25,5 +26,6 @@ THEN I am again presented with current and future conditions for that city
 ```
 
 ## Live Link
+https://jacobz96.github.io/weather-dashbord/
 
 ## Screenshot 

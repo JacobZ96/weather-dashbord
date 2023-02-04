@@ -9,18 +9,30 @@
 // THEN I am again presented with current and future conditions for that city
 
 var today = dayjs();
-var requestUrl= "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid= apiKey";
 var apiKey = "e474eaacc96b11909564331f7b9f7855"
+var searchBtnEl = document.querySelector('.btn')
 document.getElementById('date').textContent = dayjs().format('(M/D/YYYY)');
 
-function getApi(requestUrl) {
-    fetch(requestUrl).then(function (response){
-        console.log(response.status);
-    }) 
-    .then(function(data) {
-        console.log(data);
-    });
-};
+
+var getWeather = function getApi() {
+    var geoUrl = "https://openweathermap.org/api/geocoding-api"
+    var lat = "";
+    var lon = "";
+    fetch(geoUrl).then(function(response) {
+        if (response.ok) {
+            response.json()
+            .then(function(data) {
+                console.log(data);
+            })
+        } else {
+            alert('error' + response.statusText);
+        }
+        
+        var apiUrl= "https://api.openweathermap.org/data/2.5/forecast?lat="+ lat +"&lon=" + lon +"&appid=" + apiKey;
+    
+    
+    })};
+
 
 
 
