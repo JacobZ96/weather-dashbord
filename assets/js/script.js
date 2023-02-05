@@ -14,23 +14,29 @@ var searchBtnEl = document.querySelector('.btn')
 document.getElementById('date').textContent = dayjs().format('(M/D/YYYY)');
 
 
+
 var getWeather = function(city) {
-    var geoUrl = "https://openweathermap.org/geo/1.0/direct?q="+ city + "&limit=5" + "appid=" + apiKey
-    var lat = "";
-    var lon = "";
-    fetch(geoUrl).then(function(response) {
+    var geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`
+    // var lat = "";
+    // var lon = "";
+    fetch(geoUrl)
+    .then(function(response) {
         if (response.ok) {
             response.json()
-            .then(data)
+            .then(function(data){
                 console.log(data);
-        }
-    })};
+        })
+    }})
+}
+// var lonLatUrl= `https://api.openweathermap.org/data/2.5/forecast?lat="+ ${lat}&lon=${lon}&appid=${apiKey}`;
+
+ var iconUrl = `http://openweathermap.org/img/wn/10d@2x.png`
+
 getWeather();
     
-var apiUrl= "https://api.openweathermap.org/data/2.5/forecast?lat="+ lat +"&lon=" + lon +"&appid=" + apiKey;
 
 
-
+searchBtnEl.addEventListener('click', getWeather());
 
 
 // PSUDOCODING
