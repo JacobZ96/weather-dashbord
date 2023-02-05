@@ -15,9 +15,9 @@ document.getElementById('date').textContent = dayjs().format('(M/D/YYYY)');
 
 
 var getWeather = function(city) {
-    var geoUrl = "https://openweathermap.org/api/geocoding-api"
-    // var lat = "";
-    // var lon = "";
+    var geoUrl = "https://openweathermap.org/geo/1.0/direct?q="+ city + "&limit=5" + "appid=" + apiKey
+    var lat = "";
+    var lon = "";
     fetch(geoUrl).then(function(response) {
         if (response.ok) {
             response.json()
