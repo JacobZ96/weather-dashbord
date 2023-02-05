@@ -14,24 +14,20 @@ var searchBtnEl = document.querySelector('.btn')
 document.getElementById('date').textContent = dayjs().format('(M/D/YYYY)');
 
 
-var getWeather = function getApi() {
+var getWeather = function(city) {
     var geoUrl = "https://openweathermap.org/api/geocoding-api"
-    var lat = "";
-    var lon = "";
+    // var lat = "";
+    // var lon = "";
     fetch(geoUrl).then(function(response) {
         if (response.ok) {
             response.json()
-            .then(function(data) {
+            .then(data)
                 console.log(data);
-            })
-        } else {
-            alert('error' + response.statusText);
         }
-        
-        var apiUrl= "https://api.openweathermap.org/data/2.5/forecast?lat="+ lat +"&lon=" + lon +"&appid=" + apiKey;
-    
-    
     })};
+getWeather();
+    
+var apiUrl= "https://api.openweathermap.org/data/2.5/forecast?lat="+ lat +"&lon=" + lon +"&appid=" + apiKey;
 
 
 
