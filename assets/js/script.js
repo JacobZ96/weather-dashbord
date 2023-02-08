@@ -17,53 +17,24 @@ var forecastContainer = document.querySelector('#forecast');
 
 
 var curNameEl = document.getElementById('name');
-
-
-
 var curIconEl = document.getElementById('icon');
 var curTempEl = document.getElementById('Temp');
 var curHumEl = document.getElementById('Humidity');
 var curWindEl = document.getElementById('Wind');
 var searchCity = document.querySelector('input');
-// document.getElementById('date').textContent = dayjs().format('(M/D/YYYY)');
 
 
-// don't forget to replace denver with ${city}
-// var getWeather = function(city) {
-//     var geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=denver&appid=${apiKey}`
-//     var lonLatUrl= `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
-//     var lon = "";
-//     var lat = "";
-//     fetch(geoUrl)
-//     .then(function(response) {
-//         response.json()
-//             .then(function(data){
-//                 lat = data.lat;
-//                 lon = data.lon;
-//                 console.log(data)});
-            
-//      fetch(lonLatUrl)
-//             .then(function(response) {
-//                 return response.json()
-//                 .then(function(data){
-//                 console.log(data);
-//             })
-//             })
-//         })
-//     )
-
-    function fetchCoords(search) {
+function fetchCoords(search) {
         var geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${search}&appid=${apiKey}`
         fetch(geoUrl)
     .then(function(response) {
         return response.json()})
         .then(function(data) {
-            // console.log(data);
             fetchWeather(data[0]);
         })   
     }
 
-    function fetchWeather(location) {
+function fetchWeather(location) {
         console.log("location",location);
         var lat = location.lat;
         var lon = location.lon;
@@ -73,13 +44,12 @@ var searchCity = document.querySelector('input');
     .then(function(response) {
         return response.json()})
         .then(function(data) {
-            console.log(data);
             renderItems(data,city);
         })
 
     }
 
-    function renderItems(data,city) {
+function renderItems(data,city) {
         console.log(data);
         // render current weather 
         renderCurrentWeather(data.list[0],city)
@@ -87,18 +57,17 @@ var searchCity = document.querySelector('input');
         renderForecast(data.list)
     }
     
-    function renderCurrentWeather(weather,city) {
+function renderCurrentWeather(weather,city) {
         // get date
         var date = dayjs().format('M/D/YYYY');
 
-console.log("w",weather);
+        console.log("w",weather);
         // get wind,temp,humidity, icon url 
         var tempF = weather.main.temp
         var wind = weather.wind.speed
         var humidity = weather.main.humidity
         var iconUrl = `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`
 
-        // var iconUrl = `http://openweathermap.org/img/wn/10d@2x.png`
         var card = document.createElement('div');
         var cardBody = document.createElement('div');
         var heading = document.createElement('h2');
@@ -139,7 +108,9 @@ console.log("w",weather);
 function renderForecast(dailyForecast) {
     // Create unix timestamps for start and end of 5 day forecast
     var startDt = dayjs().add(1, 'day').startOf('day').unix();
-    var endDt = dayjs().add(6, 'day').startOf('day').unix();
+    var endDt = dayjs().add(5, 'day').startOf('day').unix();
+    console.log(startDt);
+    console.log(endDt);
     
   
     var headingCol = document.createElement('div');
@@ -165,35 +136,6 @@ function renderForecast(dailyForecast) {
 }
 }
 
-    
-    
-    
-    // fetch call to get the weather data 
-    // fetch(lonLatUrl)
-    // .then(function(response){
-    //     if (response.ok) {
-    //         response.json()
-    //         .then(function(data) {
-    //             console.log(data);
-    //         })
-    //     }
-    // })
-
-
-    // fetch call to get the weather icon
-    // var iconUrl = `http://openweathermap.org/img/wn/10d@2x.png`
-    // fetch(iconUrl)
-    // .then(function(response){
-    //     if (response.ok) {
-    //         response.json()
-    //         .then(function(data){
-    //             console.log(data);
-    //         })
-    //     }
-    // })
-
-
-
 
 // getWeather();
 function handleSearchFormSubmit(e) {
@@ -211,16 +153,6 @@ function handleSearchFormSubmit(e) {
 
 
 searchBtnEl.addEventListener('click', handleSearchFormSubmit);
-
-// PSUDOCODING
-
-// fectch call 1 (user will enter a city name)
-    // returns Lat/Lon
-        // fetch call 2 (takes in Lat/Lon)
-            // returns Weather data
-                // fetch call 3 (takes in icon id)
-                    // returns the actual image 
-// break these out into functions 
 
 // set localStorage to input (text)
 
